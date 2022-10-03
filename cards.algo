@@ -1,15 +1,26 @@
-PROCEDURE insertion_sort(VAR tab : ARRAY_OF INTEGER)
+PROCEDURE insertion_sort(VAR tab : ARRAY_OF INTEGER, VAR n : INTEGER)
 VAR
-   i,j,n,key : INTEGER;
+   i,j,key : INTEGER;
 BEGIN
-   n := tab.length;
- FOR i FROM 1 TO n STEP 1  DO
+ FOR i FROM 1 TO n-1 STEP 1  DO
       key=tab[i];
       j=i-1;
    END_FOR
- WHILE (j >= 0 && key < tab[j]) DO
+
+ WHILE (j >= 0 AND key < tab[j]) DO
         tab[j + 1] = tab[j];
         j=j-1;
    END_WHILE 
       tab[j + 1] = key;
+
+END
+
+ALGORITHM insertion_sort
+VAR
+    tab: ARRAY_OF INTEGER[50];
+    n:INTEGER;
+BEGIN
+    tab= [12, 10, 15, 25, 5, 8, 0, 6 ];
+    n = tab.length;
+    insertion_sort(tab , n)
 END
